@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+export Umbraco__CMS__WebRouting__UmbracoApplicationUrl=$TUGBOAT_DEFAULT_SERVICE_URL
+export Umbraco__CMS__Security__BackOfficeHost=$TUGBOAT_DEFAULT_SERVICE_URL_HOST
+
+exec /usr/bin/dotnet run --no-build --urls=http://0.0.0.0:80 --project $TUGBOAT_ROOT

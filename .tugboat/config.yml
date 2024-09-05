@@ -10,9 +10,7 @@ services:
         - apt-get update && apt-get install -y dotnet-sdk-8.0
         - mkdir -p /app
         - mkdir -p /etc/service/umbraco
-        - echo '#!/bin/sh' > /etc/service/umbraco/run
-        - echo '/usr/bin/dotnet run --no-build --urls=http://0.0.0.0:80 --project $TUGBOAT_ROOT' >> /etc/service/umbraco/run
-        - chmod +x /etc/service/umbraco/run
+        - ln -snf $TUGBOAT_ROOT/.tugboat/run /etc/service/umbraco/run
       update:
         - tar -xvzf .tugboat/data.tgz
       build:
